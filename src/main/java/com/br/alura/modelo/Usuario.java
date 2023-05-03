@@ -35,5 +35,4 @@ public class Usuario {
 	
 	@OneToMany(mappedBy = "autor")
     private List<Topico> topicos = new ArrayList<>();
-
 }

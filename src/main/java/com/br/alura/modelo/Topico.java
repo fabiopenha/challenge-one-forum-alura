@@ -49,5 +49,4 @@ public class Topico {
 	private Curso curso;
 	
 	private List<Resposta> respostas = new ArrayList<>();
-
 }

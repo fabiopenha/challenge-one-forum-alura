@@ -1,8 +1,11 @@
-package com.br.alura.modelo;
+package com.br.alura.forum.modelo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.br.alura.forum.domain.topico.DadosCadastroTopico;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,9 +47,20 @@ public class Topico {
     @JoinColumn(name = "autor_id")
 	private Usuario autor;
 	
+	
 	@ManyToOne
     @JoinColumn(name = "curso_id")
 	private Curso curso;
 	
-	private List<Resposta> respostas = new ArrayList<>();
+	//private List<Resposta> respostas = new ArrayList<>();
+	
+	public Topico(DadosCadastroTopico dados) {
+		this.titulo = dados.titulo();
+		this.mensagem = dados.mensagem();
+		this.dataCriacao = LocalDateTime.parse(dados.data_criacao() + "T00:00:00");
+		this.status = dados.status();
+		this.autor = new Usuario(dados.autor());
+		this.curso = new Curso(dados.curso());
+		
+	}
 }

@@ -1,8 +1,10 @@
-package com.br.alura.modelo;
+package com.br.alura.forum.modelo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +35,11 @@ public class Usuario {
 	private String email;
 	private String senha;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "autor")
     private List<Topico> topicos = new ArrayList<>();
+	
+	public Usuario(Long autor) {
+		this.id = autor;
+	}
 }

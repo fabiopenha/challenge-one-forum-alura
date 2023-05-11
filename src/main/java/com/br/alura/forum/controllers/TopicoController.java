@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,6 @@ public class TopicoController {
 	
 	@GetMapping
 	public Page<DadosListagemTopico> listar(@PageableDefault(size=10, sort = {"dataCriacao"}) Pageable paginacao, @RequestParam(name = "search") String search) {
-		System.out.println("search: "+search);
 		
 		if(search != "") {
 			return repository.findByTitle(search, paginacao).map(DadosListagemTopico::new);
@@ -63,4 +63,12 @@ public class TopicoController {
 		
 		topico.atualizarInfo(dados);
 	}
+	
+	@DeleteMapping("{id}")
+	@Transactional
+	public void deletar(@PathVariable Long id) {
+		repository.deleteById(id);
+	}
+	
+	
 }

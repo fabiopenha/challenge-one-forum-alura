@@ -18,6 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -55,7 +56,9 @@ public class Topico {
     @JoinColumn(name = "curso_id")
 	private Curso curso;
 	
-	//private List<Resposta> respostas = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "topico")
+	private List<Resposta> respostas = new ArrayList<>();
 	
 	public Topico(DadosCadastroTopico dados) {
 		this.titulo = dados.titulo();
@@ -67,8 +70,8 @@ public class Topico {
 		
 	}
 	
-	public Topico(DadosDetalheTopico dados) {
-		this.id = dados.id();
+	public Topico(Long topico) {
+		this.id = topico;
 		
 	}
 

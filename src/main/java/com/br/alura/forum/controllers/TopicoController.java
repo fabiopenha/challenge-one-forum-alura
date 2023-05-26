@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
 import com.br.alura.forum.domain.topico.TopicoRepository;
 import com.br.alura.forum.modelo.Topico;
+import com.br.alura.forum.services.TopicoService;
 
 import jakarta.validation.Valid;
 
@@ -31,43 +34,36 @@ import jakarta.validation.Valid;
 public class TopicoController {
 	
 	@Autowired
-	private TopicoRepository repository;
+	private TopicoService topicoService;
 	
 	@PostMapping
 	@Transactional
-	public void cadastrar(@RequestBody @Valid DadosCadastroTopico dados) {
-		repository.save(new Topico(dados));
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroTopico dados, UriComponentsBuilder uriBuilder) {
+		return topicoService.salvar(new Topico(dados), uriBuilder);
 	}
 	
 	@GetMapping
-	public Page<DadosListagemTopico> listar(@PageableDefault(size=10, sort = {"dataCriacao"}) Pageable paginacao, @RequestParam(name = "search") String search) {
+	public ResponseEntity listar(@PageableDefault(size=10, sort = {"dataCriacao"}) Pageable paginacao, @RequestParam(name = "search") String search) {
 		
-		if(search != "") {
-			return repository.findByTitle(search, paginacao).map(DadosListagemTopico::new);
-		}
-		
-		return repository.findAll(paginacao).map(DadosListagemTopico::new);
+		return topicoService.listar(paginacao, search);
 	}
 	
 	@GetMapping("{id}")
-	public Optional<DadosListagemTopico> detalhe(@PathVariable  Long id) {
-		System.out.println("Id: "+id);
+	public ResponseEntity detalhe(@PathVariable  Long id) {
 		
-		return repository.findById(id).map(DadosListagemTopico::new);
+		return topicoService.detalhe(id);
 	}
 	
 	@PutMapping("{id}")
 	@Transactional
-	public void atualizar(@RequestBody @Valid DadosCadastroTopico dados, @PathVariable Long id) {
-		var topico = repository.getReferenceById(id);
-		
-		topico.atualizarInfo(dados);
+	public ResponseEntity atualizar(@RequestBody @Valid DadosCadastroTopico dados, @PathVariable Long id) {
+		return topicoService.atualizar(dados, id);
 	}
 	
 	@DeleteMapping("{id}")
 	@Transactional
-	public void deletar(@PathVariable Long id) {
-		repository.deleteById(id);
+	public ResponseEntity deletar(@PathVariable Long id) {
+		return topicoService.deletar(id);
 	}
 	
 	

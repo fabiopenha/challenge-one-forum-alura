@@ -23,11 +23,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
+import com.br.alura.forum.domain.topico.Topico;
 import com.br.alura.forum.domain.topico.TopicoRepository;
 import com.br.alura.forum.domain.usuario.DadosCadastroUsuario;
 import com.br.alura.forum.domain.usuario.DadosListagemUsuario;
-import com.br.alura.forum.modelo.Topico;
-import com.br.alura.forum.modelo.Usuario;
+import com.br.alura.forum.domain.usuario.Usuario;
 import com.br.alura.forum.services.TopicoService;
 import com.br.alura.forum.services.UsuarioService;
 

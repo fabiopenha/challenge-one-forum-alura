@@ -1,4 +1,4 @@
-package com.br.alura.forum.modelo;
+package com.br.alura.forum.domain.usuario;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,7 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.br.alura.forum.domain.usuario.DadosCadastroUsuario;
+import com.br.alura.forum.domain.resposta.Resposta;
+import com.br.alura.forum.domain.topico.Topico;
 import com.br.alura.forum.util.PasswordUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -2,10 +2,8 @@ package com.br.alura.forum.domain.topico;
 
 import java.time.LocalDateTime;
 
-import com.br.alura.forum.modelo.Curso;
-import com.br.alura.forum.modelo.StatusTopico;
-import com.br.alura.forum.modelo.Topico;
-import com.br.alura.forum.modelo.Usuario;
+import com.br.alura.forum.domain.curso.Curso;
+import com.br.alura.forum.domain.usuario.Usuario;
 
 public record DadosListagemTopico(String titulo, String mensagem,LocalDateTime data_criacao, StatusTopico status, Usuario autor,Curso curso) {
 	public DadosListagemTopico(Topico topico) {

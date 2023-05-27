@@ -13,7 +13,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
-import com.br.alura.forum.modelo.Usuario;
+import com.br.alura.forum.domain.usuario.Usuario;
 
 @Service
 public class TokenService {

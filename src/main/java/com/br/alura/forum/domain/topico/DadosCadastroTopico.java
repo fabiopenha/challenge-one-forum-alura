@@ -11,9 +11,7 @@ public record DadosCadastroTopico(
 		@NotBlank
 		String titulo, 
 		@NotBlank
-		String mensagem,
-		@NotBlank
-		String data_criacao, 
+		String mensagem, 
 		@NotNull
 		StatusTopico status, 
 		@NotNull

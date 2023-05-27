@@ -13,6 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -51,13 +52,12 @@ public class Topico {
     @JoinColumn(name = "autor_id")
 	private Usuario autor;
 	
-	
 	@ManyToOne
     @JoinColumn(name = "curso_id")
 	private Curso curso;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "topico")
+	@OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
 	private List<Resposta> respostas = new ArrayList<>();
 	
 	public Topico(DadosCadastroTopico dados) {

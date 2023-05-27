@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
+import com.br.alura.forum.domain.topico.Topico;
 import com.br.alura.forum.domain.topico.TopicoRepository;
 import com.br.alura.forum.domain.usuario.DadosCadastroUsuario;
 import com.br.alura.forum.domain.usuario.DadosListagemUsuario;
+import com.br.alura.forum.domain.usuario.Usuario;
 import com.br.alura.forum.domain.usuario.UsuarioRepository;
-import com.br.alura.forum.modelo.Topico;
-import com.br.alura.forum.modelo.Usuario;
 
 @Service
 public class AuthService implements UserDetailsService {

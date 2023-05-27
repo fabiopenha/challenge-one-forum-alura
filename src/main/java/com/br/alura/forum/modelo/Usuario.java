@@ -16,6 +16,7 @@ import com.br.alura.forum.util.PasswordUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,7 +50,7 @@ public class Usuario implements UserDetails{
     private List<Topico> topicos = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "autor")
+	@OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
     private List<Resposta> respostas = new ArrayList<>();
 	
 	public Usuario(Long autor) {
@@ -63,8 +64,9 @@ public class Usuario implements UserDetails{
 	}
 
 	public void atualizarInfo(DadosCadastroUsuario dados) {
+		this.nome = dados.nome();
 		this.email = dados.email();
-		this.senha = dados.senha();
+		this.senha = PasswordUtil.encoder(dados.senha());
 		
 	}
 

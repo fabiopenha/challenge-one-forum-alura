@@ -13,11 +13,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.br.alura.forum.domain.resposta.DadosCadastroResposta;
 import com.br.alura.forum.domain.resposta.DadosDetalheResposta;
 import com.br.alura.forum.domain.resposta.DadosListagemResposta;
+import com.br.alura.forum.domain.resposta.Resposta;
 import com.br.alura.forum.domain.resposta.respostaRepository;
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
-import com.br.alura.forum.modelo.Resposta;
-import com.br.alura.forum.modelo.Topico;
+import com.br.alura.forum.domain.topico.Topico;
 
 @Service
 public class RespostaService {
@@ -40,9 +40,10 @@ public class RespostaService {
 		return ResponseEntity.ok(repository.findAll(paginacao).map(DadosListagemResposta::new));
 	}
 	
-	public ResponseEntity<Optional<DadosDetalheResposta>> detalhe(Long id) {
+	public ResponseEntity detalhe(Long id) {
+		var resposta = repository.getReferenceById(id);
 		
-		return ResponseEntity.ok(repository.findById(id).map(DadosDetalheResposta::new));
+		return ResponseEntity.ok(new DadosDetalheResposta(resposta));
 	}
 	
 	public ResponseEntity atualizar(DadosCadastroResposta dados, Long id) {

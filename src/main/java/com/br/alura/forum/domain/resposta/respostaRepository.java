@@ -6,8 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.br.alura.forum.modelo.Resposta;
-import com.br.alura.forum.modelo.Topico;
+import com.br.alura.forum.domain.topico.Topico;
 
 public interface respostaRepository extends JpaRepository<Resposta, Long> {
 	@Query("SELECT r FROM Resposta r WHERE r.dataCriacao LIKE %:search%")

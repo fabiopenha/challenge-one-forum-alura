@@ -1,8 +1,7 @@
 package com.br.alura.forum.domain.usuario;
 
-import com.br.alura.forum.modelo.Curso;
-import com.br.alura.forum.modelo.StatusTopico;
-import com.br.alura.forum.modelo.Usuario;
+import com.br.alura.forum.domain.curso.Curso;
+import com.br.alura.forum.domain.topico.StatusTopico;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

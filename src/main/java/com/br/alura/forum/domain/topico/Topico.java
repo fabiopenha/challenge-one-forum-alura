@@ -1,12 +1,12 @@
-package com.br.alura.forum.modelo;
+package com.br.alura.forum.domain.topico;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
-import com.br.alura.forum.domain.topico.DadosCadastroTopico;
-import com.br.alura.forum.domain.topico.DadosDetalheTopico;
+import com.br.alura.forum.domain.curso.Curso;
+import com.br.alura.forum.domain.resposta.Resposta;
+import com.br.alura.forum.domain.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -63,7 +63,7 @@ public class Topico {
 	public Topico(DadosCadastroTopico dados) {
 		this.titulo = dados.titulo();
 		this.mensagem = dados.mensagem();
-		this.dataCriacao = LocalDateTime.parse(dados.data_criacao() + "T00:00:00");
+		this.dataCriacao = LocalDateTime.now();
 		this.status = dados.status();
 		this.autor = new Usuario(dados.autor());
 		this.curso = new Curso(dados.curso());
@@ -78,7 +78,7 @@ public class Topico {
 	public void atualizarInfo(@Valid DadosCadastroTopico dados) {
 		this.titulo = dados.titulo();
 		this.mensagem = dados.mensagem();
-		this.dataCriacao = LocalDateTime.parse(dados.data_criacao() + "T00:00:00");
+		this.dataCriacao = LocalDateTime.now();
 		this.status = dados.status();
 		this.autor = new Usuario(dados.autor());
 		this.curso = new Curso(dados.curso());

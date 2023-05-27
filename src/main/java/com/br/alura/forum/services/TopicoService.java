@@ -13,8 +13,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosDetalheTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
+import com.br.alura.forum.domain.topico.Topico;
 import com.br.alura.forum.domain.topico.TopicoRepository;
-import com.br.alura.forum.modelo.Topico;
 
 @Service
 public class TopicoService {
@@ -38,9 +38,9 @@ public class TopicoService {
 		return ResponseEntity.ok(repository.findAll(paginacao).map(DadosListagemTopico::new));
 	}
 	
-	public ResponseEntity<Optional<DadosListagemTopico>> detalhe(Long id) {
-		var topico = repository.findById(id).map(DadosListagemTopico::new);
-		return ResponseEntity.ok(topico);
+	public ResponseEntity<DadosListagemTopico> detalhe(Long id) {
+		var topico = repository.getReferenceById(id);
+		return ResponseEntity.ok(new DadosListagemTopico(topico));
 	}
 	
 	public ResponseEntity atualizar(DadosCadastroTopico dados, Long id) {

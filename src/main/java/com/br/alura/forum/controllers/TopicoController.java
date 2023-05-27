@@ -23,8 +23,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
 import com.br.alura.forum.domain.topico.DadosCadastroTopico;
 import com.br.alura.forum.domain.topico.DadosListagemTopico;
+import com.br.alura.forum.domain.topico.Topico;
 import com.br.alura.forum.domain.topico.TopicoRepository;
-import com.br.alura.forum.modelo.Topico;
 import com.br.alura.forum.services.TopicoService;
 
 import jakarta.validation.Valid;

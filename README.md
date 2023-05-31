@@ -1,28 +1,31 @@
-# Challenge ONE | Back End | Alura Forum 
+<h2 align="center">Fórum Alura com Java e Spring - Desafio One</h2>
+
 
 <p align="center" >
      <img width="200" heigth="200" src="https://user-images.githubusercontent.com/78982435/209698701-28dedb2e-855b-44b2-8872-afa45e3b35aa.png">
 </p>
 
-## Nossas boas-vindas ao projeto base Fórum Alura com Java e Spring! 
+Fomos desafiados pela Alura Latam a criar uma API para o fórum Alura, e recebemos um arquivo no Trello com os cards contendo todos os requisitos do sistema. Com base nessas instruções, desenvolvemos a API para atender a todas as necessidades do projeto.
 
-### Passos fundamentais:
+**Caso de uso**
 
-#### ⭐ Marque este projeto com uma estrela 
+Usuário - Na plataforma, os usuários terão a possibilidade de realizar várias ações em relação aos tópicos. Após fazer o login, eles poderão criar novos tópicos, editar os existentes, listar todos os tópicos disponíveis, visualizar detalhes de um tópico específico e também deletar um tópico, caso desejem. Além disso, eles poderão participar ativamente respondendo aos tópicos criados por outros usuários cadastrados. Essa ampla gama de recursos permitirá uma experiência completa de interação e colaboração na plataforma.
 
-#### 📚 Siga as instruções das aulas e conteúdos 
+**Funcionalidades do sistema**
 
-#### 📃<u>*Visite a página do Challenge [Clicando aqui!](https://www.alura.com.br/challenges/oracle-one-back-end/aluraforum)*</u> 
-
-
-
-### Tecnologias utilizadas:
-
-- [Eclipse](https://www.eclipse.org/)
-- [MySql](https://www.mysql.com/)
-- [Java](https://www.java.com/pt-BR/)
-- [Spring Security](https://start.spring.io/)
-- [Token JWT](https://jwt.io/)
+ - Crud de usuários
+ - Crud de tópicos
+ - Crud de respostas
+ 
+ **Tecnologias**
+ -   [Eclipse](https://www.eclipse.org/)
+-   [MySql](https://www.mysql.com/)
+-   [Java](https://www.java.com/pt-BR/)
+-   [Spring Security](https://start.spring.io/)
+-   [Token JWT](https://jwt.io/)
+-   [Flyway](https://start.spring.io/)
+-   [Javadoc (Swagger)](https://springdoc.org/v2/#getting-started)
+-   [Postman](https://www.postman.com/)
 
 
 

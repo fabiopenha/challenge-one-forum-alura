@@ -1,6 +1,5 @@
 package com.br.alura.forum.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +23,14 @@ import com.br.alura.forum.domain.resposta.DadosCadastroResposta;
 import com.br.alura.forum.domain.resposta.DadosDetalheResposta;
 import com.br.alura.forum.domain.resposta.DadosListagemResposta;
 import com.br.alura.forum.domain.resposta.Resposta;
-import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
-import com.br.alura.forum.domain.topico.DadosCadastroTopico;
-import com.br.alura.forum.domain.topico.DadosListagemTopico;
-import com.br.alura.forum.domain.topico.Topico;
-import com.br.alura.forum.domain.topico.TopicoRepository;
 import com.br.alura.forum.services.RespostaService;
-import com.br.alura.forum.services.TopicoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/respostas")
+@SecurityRequirement(name = "bearer-key")
 public class RespostaController {
 	
 	@Autowired
@@ -48,7 +43,7 @@ public class RespostaController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<DadosListagemResposta>> listar(@PageableDefault(size=10, sort = {"dataCriacao"}) Pageable paginacao, @RequestParam(name = "search") String search) {
+	public ResponseEntity<Page<DadosListagemResposta>> listar(@PageableDefault(size=10, sort = {"dataCriacao"}) Pageable paginacao, @RequestParam(name = "search", required = false) String search) {
 		
 		return respostaService.listar(paginacao, search);
 	}

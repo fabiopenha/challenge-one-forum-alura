@@ -31,7 +31,8 @@ public class TopicoService {
 	}
 	
 	public ResponseEntity<Page<DadosListagemTopico>> listar(Pageable paginacao, String search) {
-		if(search != "") {
+		System.out.println(search);
+		if(search != null) {
 			return ResponseEntity.ok(repository.findByTitle(search, paginacao).map(DadosListagemTopico::new));
 		}
 		

@@ -1,6 +1,5 @@
 package com.br.alura.forum.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.br.alura.forum.domain.topico.DadosAtualizarTopico;
-import com.br.alura.forum.domain.topico.DadosCadastroTopico;
-import com.br.alura.forum.domain.topico.DadosListagemTopico;
-import com.br.alura.forum.domain.topico.Topico;
-import com.br.alura.forum.domain.topico.TopicoRepository;
 import com.br.alura.forum.domain.usuario.DadosCadastroUsuario;
 import com.br.alura.forum.domain.usuario.DadosListagemUsuario;
 import com.br.alura.forum.domain.usuario.Usuario;
-import com.br.alura.forum.services.TopicoService;
 import com.br.alura.forum.services.UsuarioService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 	
 	@Autowired
@@ -48,7 +43,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<DadosListagemUsuario>> listar(@PageableDefault(size=10, sort = {"email"}) Pageable paginacao, @RequestParam(name = "search") String search) {
+	public ResponseEntity<Page<DadosListagemUsuario>> listar(@PageableDefault(size=10, sort = {"email"}) Pageable paginacao, @RequestParam(name = "search", required = false) String search) {
 		
 		return usuarioService.listar(paginacao, search);
 	}

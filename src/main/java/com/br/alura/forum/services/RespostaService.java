@@ -33,7 +33,7 @@ public class RespostaService {
 	}
 	
 	public ResponseEntity<Page<DadosListagemResposta>> listar(Pageable paginacao, String search) {
-		if(search != "") {
+		if(search != null) {
 			return ResponseEntity.ok(repository.findByDataCriacao(search, paginacao).map(DadosListagemResposta::new));
 		}
 		

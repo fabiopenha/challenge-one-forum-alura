@@ -34,7 +34,7 @@ public class UsuarioService {
 	}
 	
 	public ResponseEntity<Page<DadosListagemUsuario>> listar(Pageable paginacao, String search) {
-		if(search != "") {
+		if(search != null) {
 			return ResponseEntity.ok(repository.findByEmail(search, paginacao).map(DadosListagemUsuario::new));
 		}
 		
